@@ -22,10 +22,10 @@ type BookShelfIterator struct {
 	index     int
 }
 
-func newBookShelfIterator(bookShelf *BookShelf) *BookShelfIterator {
+func (bs *BookShelf) newBookShelfIterator(index int) *BookShelfIterator {
 	return &BookShelfIterator{
-		bookShelf: bookShelf,
-		index:     0,
+		bookShelf: bs,
+		index:     index,
 	}
 }
 
@@ -73,7 +73,7 @@ func (bs *BookShelf) getLength() int {
 
 // Aggregate
 func (bs *BookShelf) iterator() Iterator {
-	return newBookShelfIterator(bs)
+	return bs.newBookShelfIterator(0)
 }
 
 func main() {
